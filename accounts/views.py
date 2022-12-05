@@ -41,8 +41,8 @@ def signup_view(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-
             confirm = form.cleaned_data['password_confirmation']
+            
             if password == confirm:
                 user = User.objects.create_user(username, password)
                 login(request, user)
