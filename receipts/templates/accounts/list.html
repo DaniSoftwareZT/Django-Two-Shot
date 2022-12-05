@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <main>
+        <h1>Accounts</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Number</th>
+                    <th>Number of receipts</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for account in account_list %}
+                    {% comment %} using for loop to access context from view and use that loop to access all of the attributes on each instance in context list from view{} {% endcomment %}
+                    <tr>
+                        <td>{{ account.name }}</td>
+                        <td>{{ account.number }}</td>
+                        <td>{{ account.receipts.count }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+{% endblock main %}
