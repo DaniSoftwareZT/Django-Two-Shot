@@ -24,14 +24,14 @@
                         <td>{{ receipt.date|date:"m/d/y" }}</td>
                         <td>{{ receipt.category.name }}</td>
                         <td>{{ receipt.account.name }}</td>
+                        <nav>
+                            <li>
+                                <a href="{% url 'receipt_create' %}">Create Receipt</a>
+                            </li>
+                        </nav>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <nav>
-            <li>
-                <a href="{% url 'receipt_create' %}">Create Receipt</a>
-            </li>
-        </nav>
     </main>
 {% endblock main %}
