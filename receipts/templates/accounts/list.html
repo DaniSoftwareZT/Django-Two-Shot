@@ -19,13 +19,13 @@
                         <td>{{ account.number }}</td>
                         <td>{{ account.receipts.count }}</td>
                         <li>
-                            <a href="{% url 'accounts_create' %}">Create Receipt Account</a>
+                            <a href="{% url 'create_account' %}">Create Account</a>
                         </li>
                     </nav>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <nav>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <nav>
     </main>
 {% endblock main %}
