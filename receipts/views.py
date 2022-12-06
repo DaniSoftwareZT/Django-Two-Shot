@@ -1,15 +1,31 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Receipt, Account, ExpenseCategory
 from django.contrib.auth.decorators import login_required
-from .forms import CreateViewForm, ExpenseCategoryForm
+from .forms import CreateViewForm, ExpenseCategoryForm, AccountForm
 
 # Create your views here.
 
 
 @login_required
+def create_account(request):
+    if request.method == "POST":
+        form = AccountForm(request.POST) #connected to line 20
+        if form.is_valid():
+            accounts = form.save(commit=False)
+            accounts.owner = request.user
+            accounts.save()
+            return redirect("account_list")
+    else:
+        form = AccountForm()
+    context = {"form": form}
+    return render(request, "accounts/create.html", context)
+
+
+
+@login_required
 def create_category(request):
     if request.method == "POST":
-        form = ExpenseCategoryForm(request.POST) #connected to line 20
+        form = ExpenseCategoryForm(request.POST) #connected to line 36
         if form.is_valid():
             categories = form.save(commit=False)
             categories.owner = request.user
